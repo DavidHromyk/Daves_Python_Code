@@ -1,4 +1,3 @@
-
 def player_input():
     
     marker = ''
@@ -25,11 +24,10 @@ def tboard_list():
     board_list = ['#']
     while len(board_list) < 10:
         r = input(f'Player 1 place {player_1}: ')
-        t = input(f'Player 2 place {player_2}: ')
+
         if r == 'X' or r =='O':
             board_list.append(r)
-        elif t == 'X' or t == 'O':
-            board_list.append(t)
+
             
                 
     return board_list
@@ -46,19 +44,24 @@ def draw_board(board):
     print (board[4] + '|' + board[5] + '|' + board[6] + '|')
     print ('------')
     print (board[1] + '|' + board[2] + '|' + board[3] + '|')
+
+
     
     # Return the win if there are 3 in a row
-    marker = 'X'
-    if board[7] == marker and board[8] == marker and board[9] == marker:
-        return ('Player 1 wins!')
-    if board[4] == marker and board[5] == marker and board[6] == marker:
-        return ('Player 1 wins!')
-    if board[1] == marker and board[2] == marker and board[3] == marker:
-        return ('Player 1 wins!')
-    if board[7] == marker and board[4] == marker and board[1] == marker:
-        return ('Player 1 wins!')
-    if board[8] == marker and board[5] == marker and board[2] == marker:
-        return ('Player 1 wins!')
-    if board[9] == marker and board[6] == marker and board[3] == marker:
-        return ('Player 1 wins!')
+    
+def place_marker(board, marker, position):
+    board[position] = marker
 
+
+def player_choice(board):
+    position = 0
+    
+    while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
+        position = int(input('Choose your next position: (1-9) '))
+        
+    return position
+
+print ('\n' * 2)
+position = player_choice(draw_board)
+place_marker(tboard,player_1,position)
+draw_board(tboard)
