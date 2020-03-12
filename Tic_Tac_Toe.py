@@ -1,40 +1,3 @@
-def player_input():
-    
-    marker = ''
-    
-    while not (marker == 'X' or marker == 'O'):
-        marker = input('Player 1 please select X or O: ')
-        
-    if marker == 'X':
-        return ('X', 'O')
-    else:
-        return ('O','X')
-    
-player_1,player_2 = player_input()
-
-print ('\n' * 2)
-print (f'Player 1 is {player_1}')
-print (f'Player 2 is {player_2}')
-
-
-
-print ('\n' * 3)
-def tboard_list():
-    # Generate the list
-    board_list = ['#']
-    while len(board_list) < 10:
-        r = input(f'Player 1 place {player_1}: ')
-
-        if r == 'X' or r =='O':
-            board_list.append(r)
-
-            
-                
-    return board_list
-
-tboard = tboard_list()
-
-
 def draw_board(board):
     
     
@@ -45,23 +8,56 @@ def draw_board(board):
     print ('------')
     print (board[1] + '|' + board[2] + '|' + board[3] + '|')
 
+def player_input():
+    
+    marker = ''
+    while not (marker == 'X' or marker == 'O'):
+        marker = input('Player 1 please select X or O: ')
+    
+    if marker == 'X':
+        return ('X','O')
+    else:
+        return ('O','X')
 
-    
-    # Return the win if there are 3 in a row
-    
 def place_marker(board, marker, position):
     board[position] = marker
 
+def win_check(board, mark):
+    
+    return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
+    (board[4] == mark and board[5] == mark and board[6] == mark) or # across the middle
+    (board[1] == mark and board[2] == mark and board[3] == mark) or # across the bottom
+    (board[7] == mark and board[4] == mark and board[1] == mark) or # down the middle
+    (board[8] == mark and board[5] == mark and board[2] == mark) or # down the middle
+    (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
+    (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
+    (board[9] == mark and board[5] == mark and board[1] == mark))
+
+import random
+
+def choose_random():
+    if random.randint(0,1) == 0:
+        return 'Player 1 goes first'
+    else:
+        return 'Player 2 goes first'
+
+def space_check(board, position):
+    
+    return board[position] == ''
+
+def full_board_check(board):
+    
+    for i in range(1,10):
+        if space_check(board,i):
+            return False
+    return True
 
 def player_choice(board):
-    position = 0
     
-    while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
-        position = int(input('Choose your next position: (1-9) '))
-        
+    position = 0
+    while not [1,2,3,4,5,6,7,8,9] and not full_board_check(board):
+        position = input('Select a position on the board: ')
     return position
 
-print ('\n' * 2)
-position = player_choice(draw_board)
-place_marker(tboard,player_1,position)
-draw_board(tboard)
+def replay():
+    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
