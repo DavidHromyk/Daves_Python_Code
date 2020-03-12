@@ -1,10 +1,37 @@
+
+def player_input():
+    
+    marker = ''
+    
+    while not (marker == 'X' or marker == 'O'):
+        marker = input('Player 1 please select X or O: ')
+        
+    if marker == 'X':
+        return ('X', 'O')
+    else:
+        return ('O','X')
+    
+player_1,player_2 = player_input()
+
+print ('\n' * 2)
+print (f'Player 1 is {player_1}')
+print (f'Player 2 is {player_2}')
+
+
+
+print ('\n' * 3)
 def tboard_list():
     # Generate the list
     board_list = ['#']
     while len(board_list) < 10:
-        r = input('Please select X or O: ')
+        r = input(f'Player 1 place {player_1}: ')
+        t = input(f'Player 2 place {player_2}: ')
         if r == 'X' or r =='O':
             board_list.append(r)
+        elif t == 'X' or t == 'O':
+            board_list.append(t)
+            
+                
     return board_list
 
 tboard = tboard_list()
@@ -35,30 +62,3 @@ def draw_board(board):
     if board[9] == marker and board[6] == marker and board[3] == marker:
         return ('Player 1 wins!')
 
-def player_input():
-    
-    marker = ''
-    # Ask player 1 to choose X 0
-    while the marker != 'X' and marker != 'O':
-        return input('Player 1, please select X or O')
-
-    
-    
-print ('\n' * 5)
-# Call the list for the board
-tboard = tboard_list()
-
-# Call the drawing of the board
-draw_board(tboard)
-
-def player_input():
-    
-    marker = ''
-    
-    while not (marker == 'X' or marker == 'O'):
-        marker = input('Player 1 please select X or O: ')
-        
-    if marker == 'X':
-        return ('X', 'O')
-    else:
-        return ('O','X')
