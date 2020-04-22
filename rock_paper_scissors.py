@@ -4,6 +4,16 @@ from IPython.display import clear_output
 hands = [1,2,3]
 players = ['Player 1','Computer']
 
+
+def check_win(choice,computer_choice):
+    if choice == 1 and computer_choice == 1 or choice == 2 and computer_choice == 2 or choice == 3 and computer_choice ==3:
+        print ('\nDraw!')
+    if choice == 1 and computer_choice == 2 or choice == 3 and computer_choice == 1 or choice == 2 and computer_choice ==3:
+        print ('\nComputer Wins!')
+    if choice == 1 and computer_choice == 3 or choice == 2 and computer_choice == 1 or choice == 3 and computer_choice ==2:
+        print ('\nYou Win!')
+
+        
 while True:
     
     
@@ -50,12 +60,7 @@ while True:
         
         # Check winning conditions
         
-        if choice == 1 and computer_choice == 1 or choice == 2 and computer_choice == 2 or choice == 3 and computer_choice ==3:
-            print ('\nDraw!')
-        if choice == 1 and computer_choice == 2 or choice == 3 and computer_choice == 1 or choice == 2 and computer_choice ==3:
-            print ('\nComputer Wins!')
-        if choice == 1 and computer_choice == 3 or choice == 2 and computer_choice == 1 or choice == 3 and computer_choice ==2:
-            print ('\nYou Win!')
+        check_win(choice,computer_choice)
             
         again = input("Would you like to play again?: ")
         
