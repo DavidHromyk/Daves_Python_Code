@@ -30,9 +30,6 @@ def check_win(choice,computer_choice):
     if player_wins == 3:
         sys.exit("Player 1 has won it all!\n")
 
-def play_again():
-    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
-    
 def playing():
     hands = [1,2,3]
     computer_choice = random.choice(hands)
@@ -47,8 +44,9 @@ def playing():
         os.system('cls')
         choice = int(input("Try again. Please Select\n\n1. Rock \n2. Paper\n3. Scissors: "))
 
-            
 
+    if choice > 3:
+        choice = random.choice(hands)
     if choice == 1:
         choice_name = "rock"
     elif choice == 2 :
