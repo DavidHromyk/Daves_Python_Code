@@ -11,24 +11,21 @@ def check_win(choice, computer_choice):
     global player_wins
     if choice == 1 and computer_choice == 1 or choice == 2 and computer_choice == 2 or choice == 3 and computer_choice == 3:
         print('\nDraw!')
-        print("_____________________________")
     if choice == 1 and computer_choice == 2 or choice == 3 and computer_choice == 1 or choice == 2 and computer_choice == 3:
         print('\nComputer Wins!')
-        print("_____________________________")
         computer_wins = computer_wins + 1
         print(f"\nComputer wins {computer_wins}")
         print(f"\nPlayer 1 wins {player_wins}")
     if choice == 1 and computer_choice == 3 or choice == 2 and computer_choice == 1 or choice == 3 and computer_choice == 2:
         print('\nYou Win!')
-        print("_____________________________")
         player_wins = player_wins + 1
         print(f"\nPlayer 1 wins {player_wins}")
         print(f"\nComputer wins {computer_wins}")
 
     if computer_wins == 3:
-        sys.exit("Computer has won it all!\n")
+        sys.exit("\n|Computer has won it all!|\n")
     if player_wins == 3:
-        sys.exit("Player 1 has won it all!\n")
+        sys.exit("\n|Player 1 has won it all!|\n")
 
 
 def playing():
@@ -49,8 +46,10 @@ def playing():
         choice = random.choice(hands)
     if choice == 1:
         choice_name = "rock"
+
     elif choice == 2:
         choice_name = "paper"
+
     else:
         choice_name = "scissors"
 
@@ -62,9 +61,77 @@ def playing():
         computer_choice_name = "scissors"
 
     os.system('cls')
-    print("_____________________________")
-    print(f"\nYour choice is {choice_name}")
-    print(f"\nComputer choice is {computer_choice_name}")
+    if choice_name == "rock":
+        print("""
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+""")
+        print(f"\nYour choice is {choice_name}")
+        print("_____________________________")
+
+    if choice_name == "paper":
+        print("""
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+""")
+        print(f"\nYour choice is {choice_name}")
+        print("_____________________________")
+
+    if choice_name == "scissors":
+        print("""
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+""")
+        print(f"\nYour choice is {choice_name}")
+        print("_____________________________")
+
+    if computer_choice_name == "rock":
+        print("""
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+""")
+        print(f"\nComputer choice is {computer_choice_name}")
+        print("_____________________________")
+
+    if computer_choice_name == "paper":
+        print("""
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+""")
+        print(f"\nComputer choice is {computer_choice_name}")
+        print("_____________________________")
+
+    if computer_choice_name == "scissors":
+        print("""
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+""")
+        print(f"\nComputer choice is {computer_choice_name}")
+        print("_____________________________")
 
     check_win(choice, computer_choice)
 
@@ -89,7 +156,7 @@ def main():
 
         else:
             os.system('cls')
-            print("Maybe we'll play next time")
+            print("Maybe we'll play next time\n\n\n")
             break
 
 
