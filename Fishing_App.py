@@ -71,15 +71,13 @@ if Check_Times() == True:
     if t == False:
         Check_Temp()
 
+def Convert_To_Json():
+    x = {
+       "time": Place,
+       "temperature": Temp,
+       "Clouds": CloudCover
+        }
+    y = json.dumps(x)
+    print(y)
 
-
-
-
-
-
-
- 
-
-
-
-
+Convert_To_Json()
